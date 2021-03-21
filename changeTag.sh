@@ -1,0 +1,1 @@
+sed "s/tagVersion/$1/g" Deployment.yaml > go-deployment.yaml
