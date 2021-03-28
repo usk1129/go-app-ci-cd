@@ -16,6 +16,6 @@ func main() {
 
 func helloWorldEndPoint(writer http.ResponseWriter, request *http.Request) {
 
-    fmt.Fprintf(writer, "hello world")
+    fmt.Fprintf(writer, "hello world ci cd!")
 
 }
