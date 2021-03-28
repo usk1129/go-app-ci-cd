@@ -69,5 +69,23 @@ pipeline {
                                 inventory: 'ansible/inventory'
             }
         }
+         // Dont use this for production 
+        stage('Deploy to k8s'){
+            steps{
+                 sh 'chmod +x changeTag.sh'
+                 sh './changeTag.sh ${BUILD_NUMBER}'
+            sshagent(['kops-machine']){
+                sh "scp -o StrictHostKeyChecking=no go-deployment.yaml service.yaml ec2-user@54.145.240.248:/home/ec2-user/"
+                script{
+                    try{
+                        sh "ssh ec2-user@54.145.240.248 kubectl apply -f ."
+                    }catch(error){
+                        sh "ssh ec2-user@54.145.240.248 kubectl create -f ."
+                    }
+                
+                }
+            }
+            }
+        }
 }
 }
