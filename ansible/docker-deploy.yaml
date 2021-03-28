@@ -21,6 +21,6 @@
         state: present
     - name: Create  container
       docker_container:
-        name: nodeapp
+        name: goapp
         image: usko/golang:{{tag}}
         published_ports: ["8080:9000"]
