@@ -1,2 +1,2 @@
 [webservers]
-54.145.240.248  ansible_user=ec2-user
+192.168.33.11 ansible_user=vagrant
