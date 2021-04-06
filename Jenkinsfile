@@ -75,7 +75,7 @@ pipeline {
                  sh 'chmod +x changeTag.sh'
                  sh './changeTag.sh ${BUILD_NUMBER}'
                  script {
-                    kubernetesDeploy(configs: "go-deployment.yaml", kubeconfigId: "kube-config") 
+                    kubernetesDeploy(configs: "go-deployment.yaml", kubeconfigId: "my-kubernetes") 
                     }
                 }
               }
