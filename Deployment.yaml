@@ -14,7 +14,7 @@ spec:
     spec:      
       containers:
       - name: app        
-        image: "usko/golang:latest"
+        image: "usko/golang:tagVersion"
         imagePullPolicy: Always
 ---
 apiVersion: v1
