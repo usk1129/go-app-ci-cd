@@ -69,7 +69,19 @@ pipeline {
                                 inventory: 'ansible/inventory'
             }
         }
-        
+        /** local minikube cluster
+        stage('Deploy t') {
+            steps {
+                sh 'chmod +x changeTag.sh'
+                sh './changeTag.sh ${BUILD_NUMBER}'
+                withCredentials([
+                    string(credentialsId: 'my-kubernetes', variable: 'api_token')
+                    ]) {
+                     sh 'kubectl --token $api_token --server https://192.168.64.6:6443 --insecure-skip-tls-verify=true apply -f go-deployment.yaml'
+                       }
+                    }
+                   }
+        **/
         stage('Deploy to k8s'){
             steps{
                  sh 'chmod +x changeTag.sh'
@@ -79,6 +91,6 @@ pipeline {
                     }
                 }
               }
-            }
+    }
 }
 
