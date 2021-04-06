@@ -1,2 +1,2 @@
 [webservers]
-192.168.33.11 ansible_user=vagrant
+ip_addr ansible_user=user
