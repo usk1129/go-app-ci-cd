@@ -65,7 +65,7 @@ pipeline {
                 ansiblePlaybook extras: "-e tag=${env.BUILD_NUMBER}", 
                                 credentialsId: 'private-key',
                                 disableHostKeyChecking: true, 
-                                playbook: 'ansible/docker-deploy.yaml',
+                                playbook: 'ansible/docker-vagrant.yaml',
                                 inventory: 'ansible/inventory'
             }
         }
